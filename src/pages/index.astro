@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Le Viaduc sauna">
+  <main class="scroll-smooth">
+    <section id="intro" class="section-animate h-lvh animate-gradient py-20">
+      <h2 class="text-center">Intro</h2>
+    </section>
+
+    <section id="galery" class="h-lvh bg-viaduc-pink py-20">
+      <h2 class="text-center">Galerie</h2>
+    </section>
+
+    <section id="evening" class="h-lvh bg-viaduc-indigo py-20">
+      <h2 class="text-center">Soirées</h2>
+    </section>
+
+    <section id="schedule" class="h-lvh bg-viaduc-black py-20">
+      <h2 class="text-center">Horaires</h2>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+  .section-animate {
+    background: linear-gradient(-45deg, #e6007e, #7b549e, #0052a1);
+    background-size: 400% 400%;
+  }
+
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 18px;
+  }
+</style>

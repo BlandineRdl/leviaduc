@@ -1,0 +1,23 @@
+---
+import Nav from "./Nav.astro";
+import { Image } from "astro:assets";
+import Logo from "../images/Logo/le_viaduc final_court_animation.gif";
+---
+
+<header class="flex flex-col">
+  <div class="flex-grow mx-10 pt-10">
+    <div class="md:flex md:justify-center md:items-center">
+      <Image src={Logo} alt="Le Viaduc sauna" width="500" height="200" />
+    </div>
+    <Nav />
+  </div>
+  <div class="flex-shrink-0">
+    <Image
+      src="https://placehold.co/400x500"
+      width="400"
+      height="500"
+      alt="Le Viaduc sauna"
+      class="w-full h-full object-cover"
+    />
+  </div>
+</header>

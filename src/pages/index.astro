@@ -1,23 +1,85 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Carousel from "../components/Carousel";
+
+const imagesEvening: string[] = await Astro.glob(
+  "/src/images/evening/*.{jpeg,jpg,png,gif}"
+).then((files) => {
+  return files.map((file) => file.default.src);
+});
+
+const imagesGalery: string[] = await Astro.glob(
+  "/src/images/evening/*.{jpeg,jpg,png,gif}"
+).then((files) => {
+  return files.map((file) => file.default.src);
+});
 ---
 
 <Layout title="Le Viaduc sauna">
-  <main class="scroll-smooth">
+  <main>
     <section id="intro" class="section-animate h-lvh animate-gradient py-20">
-      <h2 class="text-center">Intro</h2>
+      <h2 class="text-center pb-10">Intro</h2>
+
+      <div class="text-center flex flex-col justify-around h-full px-4">
+        <p class="text-viaduc-white">
+          <b>Le Viaduc</b> est un lieu unique où se mêlent et s'entremêlent :
+        </p>
+
+        <div class="gap-12 flex flex-col text-viaduc-white">
+          <details>
+            <summary class="uppercase">Plaisir</summary><p>
+              Blablablablablabla
+            </p>
+          </details>
+          <details>
+            <summary class="uppercase">Discrétion</summary><p>
+              Blablablablablabla
+            </p>
+          </details>
+          <details>
+            <summary class="uppercase">Respect</summary><p>
+              Blablablablablabla
+            </p>
+          </details>
+          <details>
+            <summary class="uppercase">Hygiène</summary><p>
+              Blablablablablabla
+            </p>
+          </details>
+        </div>
+
+        <p class="text-viaduc-white">
+          De plus, le club est un espace mixte tous les jours. Blablabla...
+        </p>
+      </div>
     </section>
 
-    <section id="galery" class="h-lvh bg-viaduc-pink py-20">
+    <section id="galery" class="h-lvh bg-viaduc-pink pt-20 flex flex-col">
       <h2 class="text-center">Galerie</h2>
+
+      <div class="w-[100%] m-auto mb-0">
+        <Carousel slides={imagesGalery} client:load />
+      </div>
     </section>
 
-    <section id="evening" class="h-lvh bg-viaduc-indigo py-20">
+    <section id="evening" class="h-lvh bg-viaduc-indigo pt-20 flex flex-col">
       <h2 class="text-center">Soirées</h2>
+
+      <div class="w-[100%] m-auto pt-11 mb-0">
+        <Carousel slides={imagesEvening} client:load />
+      </div>
     </section>
 
     <section id="schedule" class="h-lvh bg-viaduc-black py-20">
       <h2 class="text-center">Horaires</h2>
+
+      <article class="flex justify-around flex-col px-10 h-full">
+        <p class="text-viaduc-white text-base text-center">
+          Ouvert tous les jours à partir de 13h00
+        </p>
+
+        <div class="h-96 maw-w-96 bg-viaduc-blue">Carte</div>
+      </article>
     </section>
   </main>
 </Layout>
@@ -30,9 +92,28 @@ import Layout from "../layouts/Layout.astro";
 
   h2 {
     font-size: 36px;
-    font-weight: 700;
+    font-weight: 700; /* TODO ne marche pas */
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: 18px;
+    letter-spacing: 1.1rem;
+    text-indent: 1.1rem;
   }
+
+  p,
+  ul li span {
+    letter-spacing: 4px;
+  }
+
+  summary::marker {
+    content: '';
+  }
+
+  details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+  0%    {opacity: 0; margin-left: -10px}
+  100%  {opacity: 1; margin-left: 0px}
+}
 </style>

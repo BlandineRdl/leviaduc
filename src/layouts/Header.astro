@@ -1,12 +1,12 @@
 ---
 import Nav from "./Nav.astro";
 import { Image } from "astro:assets";
-import Logo from "../images/Logo/le_viaduc final_court_animation.gif";
+import Logo from '/src/images/logo/le_viaduc_final_court.png'
 ---
 
 <header class="flex flex-col">
   <div class="flex-grow mx-10 pt-10">
-    <div class="md:flex md:justify-center md:items-center">
+    <div class="flex justify-center items-center">
       <Image src={Logo} alt="Le Viaduc sauna" width="500" height="200" />
     </div>
     <Nav />
@@ -17,7 +17,7 @@ import Logo from "../images/Logo/le_viaduc final_court_animation.gif";
       width="400"
       height="500"
       alt="Le Viaduc sauna"
-      class="w-full h-full object-cover"
+      class="object-cover"
     />
   </div>
 </header>

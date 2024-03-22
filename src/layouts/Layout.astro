@@ -17,14 +17,55 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/leviaduc/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <script
+      is:inline
       src="https://kit.fontawesome.com/d98bb86b30.js"
       crossorigin="anonymous"></script>
+
+    <script>
+      const consentDialog = document.getElementById("consent-dialog") as  HTMLDialogElement | null;
+      const confirmDialog = document.getElementById("confirm-dialog");
+      const mainContent = document.getElementById('main-content');
+
+      confirmDialog?.addEventListener('click', () => {
+        consentDialog?.close();
+        mainContent?.classList.remove('hidden'); // Affiche le contenu principal
+
+      })
+
+    </script>
   </head>
   <body>
+    <dialog id="consent-dialog" open class="rounded">
+        <h3 class="font-bold text-center mb-4">Attention: Site reserve aux personnes de plus de 18ans</h3>
+
+        <p class="mb-4 text-sm">
+          Ce site internet est réservé à un public majeur et averti.<br /> Il est
+          conforme à toutes les règlementations françaises en vigueur. <br /> Il
+          contient des textes, des liens et des photos susceptibles de choquer les
+          plus jeunes
+        </p>
+
+        <p class="mb-4 text-sm">
+          Je certifie sur l'honneur être majeur selon la loi en vigueur dans mon
+          pays. <br /> Je suis informé du caractère pornographique d'une partie du
+          contenu et m'interdis de poursuivre la société éditrice de toute action
+          judiciaire.
+        </p>
+      <menu class="flex justify-end pt-4">
+        <a href="http://www.google.com" id="cancel-dialog" class="bg-black text-white font-bold py-2 px-4 rounded"
+          >J'ai moins de 18 ans - Sortir
+      </a>
+        <button id="confirm-dialog" value="default" class="ml-4 text-white font-bold py-2 px-4 rounded"
+          >J'ai 18 ans ou plus - Entrer</button
+        >
+      </menu>
+    </dialog>
+    
+    <div class="hidden" id="main-content">
     <Header />
     <slot />
     <Footer />
@@ -33,6 +74,7 @@ const { title } = Astro.props;
         class="fa-solid fa-arrow-up fixed bottom-1 right-1 text-2xl rounded-full bg-viaduc-black w-10 h-10 inline-flex items-center justify-center"
         style="color: #ffffff;"></i></a
     >
+  </div>
   </body>
 </html>
 <style is:global>
@@ -50,5 +92,18 @@ const { title } = Astro.props;
   html {
     background: #050000;
     font-family: "Poppins", sans-serif;
+  }
+
+
+  dialog {
+    position:absolute;
+    top: 25%;
+    max-width: 750px;
+    padding: 2rem;
+    z-index: 100;
+  }
+
+  #confirm-dialog {
+    background: linear-gradient(-45deg, #e6007e, #7b549e, #0052a1);
   }
 </style>

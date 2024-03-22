@@ -9,7 +9,7 @@ const imagesEvening: string[] = await Astro.glob(
 });
 
 const imagesGalery: string[] = await Astro.glob(
-  "/src/images/evening/*.{jpeg,jpg,png,gif}"
+  "/src/images/galery/*.{jpeg,jpg,png,gif}"
 ).then((files) => {
   return files.map((file) => file.default.src);
 });
@@ -17,6 +17,7 @@ const imagesGalery: string[] = await Astro.glob(
 
 <Layout title="Le Viaduc sauna">
   <main>
+   
     <section id="intro" class="section-animate h-lvh animate-gradient py-20">
       <h2 class="text-center pb-10">Intro</h2>
 
@@ -54,23 +55,23 @@ const imagesGalery: string[] = await Astro.glob(
       </div>
     </section>
 
-    <section id="galery" class="h-lvh bg-viaduc-pink pt-20 flex flex-col">
-      <h2 class="text-center">Galerie</h2>
+    <section id="galery" class="bg-viaduc-pink py-20 flex flex-col">
+      <h2 class="text-center pb-10">Galerie</h2>
 
-      <div class="w-[100%] m-auto mb-0">
+      <div class="w-[100%] max-w-4xl m-auto pt-11 mb-0">
         <Carousel slides={imagesGalery} client:load />
       </div>
     </section>
 
-    <section id="evening" class="h-lvh bg-viaduc-indigo pt-20 flex flex-col">
-      <h2 class="text-center">Soirées</h2>
+    <section id="evening" class="bg-viaduc-indigo py-20 flex flex-col">
+      <h2 class="text-center pb-10">Soirées</h2>
 
-      <div class="w-[100%] m-auto pt-11 mb-0">
+      <div class="w-[100%] max-w-4xl m-auto pt-11 mb-0">
         <Carousel slides={imagesEvening} client:load />
       </div>
     </section>
 
-    <section id="schedule" class="h-lvh bg-viaduc-black py-20">
+    <section id="schedule" class="bg-viaduc-black py-20">
       <h2 class="text-center">Horaires</h2>
 
       <article class="flex justify-around flex-col px-10 h-full">
@@ -78,7 +79,7 @@ const imagesGalery: string[] = await Astro.glob(
           Ouvert tous les jours à partir de 13h00
         </p>
 
-        <div class="h-96 maw-w-96 bg-viaduc-blue">Carte</div>
+        <!-- <div class="h-96 maw-w-96 bg-viaduc-blue">Carte</div>-->
       </article>
     </section>
   </main>
@@ -104,16 +105,31 @@ const imagesGalery: string[] = await Astro.glob(
     letter-spacing: 4px;
   }
 
+  summary {
+    cursor: pointer;
+  }
+
   summary::marker {
-    content: '';
+    content: "";
   }
 
   details[open] summary ~ * {
-  animation: sweep .5s ease-in-out;
-}
+    animation: sweep 0.5s ease-in-out;
+  }
 
-@keyframes sweep {
-  0%    {opacity: 0; margin-left: -10px}
-  100%  {opacity: 1; margin-left: 0px}
-}
+  section#galery,
+  section#evening {
+    max-height: 1000px;
+  }
+
+  @keyframes sweep {
+    0% {
+      opacity: 0;
+      margin-left: -10px;
+    }
+    100% {
+      opacity: 1;
+      margin-left: 0px;
+    }
+  }
 </style>

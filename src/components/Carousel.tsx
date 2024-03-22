@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 type CarouselProps = {
   slides: string[];
@@ -17,10 +17,12 @@ export default function Carousel({ slides }: CarouselProps) {
     else setCurrent(current + 1);
   };
 
+  console.log({ slides });
+
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <div
-        className={`flex transition ease-out duration-40 overflow-hidden`}
+        className={`flex transition ease-out duration-40`}
         style={{
           transform: `translateX(-${current * 100}%)`,
         }}
@@ -32,7 +34,6 @@ export default function Carousel({ slides }: CarouselProps) {
               src={s}
               alt="Affiche de soirées"
               className="object-cover"
-              style={{ height: 600 }}
             />
           );
         })}
@@ -71,7 +72,7 @@ export default function Carousel({ slides }: CarouselProps) {
         </button>
       </div>
 
-      <div className="absolute -top-10 py-4 flex justify-center gap-3 w-full">
+      <div className="absolute -top-10 flex justify-center gap-3 w-full">
         {slides.map((s, i) => {
           return (
             <div

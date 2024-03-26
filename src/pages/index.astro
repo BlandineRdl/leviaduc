@@ -18,32 +18,32 @@ const imagesGalery: string[] = await Astro.glob(
 <Layout title="Le Viaduc sauna">
   <main>
    
-    <section id="intro" class="section-animate h-lvh animate-gradient py-20">
+    <section id="intro" class="section-animate xl:h-lvh animate-gradient py-20">
       <h2 class="text-center pb-10">Intro</h2>
 
-      <div class="text-center flex flex-col justify-around h-full px-4">
+      <div class="text-center flex flex-col justify-around h-full px-4 gap-20 xl:gap-0">
         <p class="text-viaduc-white">
           <b>Le Viaduc</b> est un lieu unique où se mêlent et s'entremêlent :
         </p>
 
-        <div class="gap-12 flex flex-col text-viaduc-white">
+        <div class="gap-12 flex flex-col xl:flex-row xl:justify-around text-viaduc-white">
           <details>
-            <summary class="uppercase">Plaisir</summary><p>
+            <summary class="uppercase xl:text-2xl">Plaisir</summary><p>
               Blablablablablabla
             </p>
           </details>
           <details>
-            <summary class="uppercase">Discrétion</summary><p>
+            <summary class="uppercase xl:text-2xl">Discrétion</summary><p>
               Blablablablablabla
             </p>
           </details>
           <details>
-            <summary class="uppercase">Respect</summary><p>
+            <summary class="uppercase xl:text-2xl">Respect</summary><p>
               Blablablablablabla
             </p>
           </details>
           <details>
-            <summary class="uppercase">Hygiène</summary><p>
+            <summary class="uppercase xl:text-2xl">Hygiène</summary><p>
               Blablablablablabla
             </p>
           </details>
@@ -79,7 +79,7 @@ const imagesGalery: string[] = await Astro.glob(
           Ouvert tous les jours à partir de 13h00
         </p>
 
-        <!-- <div class="h-96 maw-w-96 bg-viaduc-blue">Carte</div>-->
+       
       </article>
     </section>
   </main>
@@ -107,6 +107,7 @@ const imagesGalery: string[] = await Astro.glob(
 
   summary {
     cursor: pointer;
+    letter-spacing: 2.25px;
   }
 
   summary::marker {
